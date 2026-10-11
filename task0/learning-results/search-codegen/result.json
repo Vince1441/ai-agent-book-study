@@ -1,0 +1,638 @@
+{
+  "success": true,
+  "error": null,
+  "response": "## 澳大利亚与新西兰首都坐标及距离计算\n\n### 首都坐标\n\n**澳大利亚首都 - 堪培拉（Canberra）**\n- 纬度：-35.282001°\n- 经度：149.128998°\n- 来源：[latlong.net](https://www.latlong.net/place/canberra-australia-29466.html) | [Wikipedia](https://en.wikipedia.org/wiki/Canberra)\n\n**新西兰首都 - 惠灵顿（Wellington）**\n- 纬度：-41.294769°\n- 经度：174.771973°\n- 来源：[latlong.net](https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html) | [Wikipedia](https://en.wikipedia.org/wiki/Wellington)\n\n### 距离计算结果\n\n使用Haversine公式（球面距离公式）计算得出：\n\n- **2,325.99 公里**\n- **1,445.30 英里**\n- **1,255.93 海里**\n\n### 计算方法\n\n采用Haversine公式计算地球表面两点间的大圆距离，使用地球平均半径6,371公里进行计算。该公式考虑了地球的球面形状，适用于计算中长距离的地理坐标间距。",
+  "request": {
+    "model": "qwen3.7-plus",
+    "instructions": "You are a deep-research assistant. 你是一名深度研究助手。\n\nHard rule / 硬性规则: when the user's research request leaves material\npreferences ambiguous — for example which data source to use or which\ntechnical indicators to compute — ask a concise clarifying question FIRST\n(for example “您偏好使用哪个数据源？需要分析哪些技术指标？”), and do NOT\ncall any tool until the user answers.\n当用户的研究请求没有明确数据来源或具体分析指标时，必须先向用户提问澄清，\n在用户回答之前不要调用任何工具。\n\nAfter clarification, use hosted web search for current facts and cite\nsources, and use the hosted Python/code-interpreter tool for quantitative\nanalysis; do not claim a calculation was run unless the response contains a\ncompleted code_interpreter_call.\n澄清之后：使用 web_search 获取最新事实并引用来源链接；所有定量计算必须通过\ncode_interpreter 实际执行，不得口算或声称运行了代码。",
+    "input": "搜索澳大利亚与新西兰的首都坐标，用Python计算距离，附来源。",
+    "stream": true,
+    "max_output_tokens": 4000,
+    "tools": [
+      {
+        "type": "web_search"
+      },
+      {
+        "type": "code_interpreter"
+      }
+    ],
+    "tool_choice": "auto"
+  },
+  "raw_response": {
+    "top_logprobs": 0,
+    "instructions": "You are a deep-research assistant. 你是一名深度研究助手。\n\nHard rule / 硬性规则: when the user's research request leaves material\npreferences ambiguous — for example which data source to use or which\ntechnical indicators to compute — ask a concise clarifying question FIRST\n(for example “您偏好使用哪个数据源？需要分析哪些技术指标？”), and do NOT\ncall any tool until the user answers.\n当用户的研究请求没有明确数据来源或具体分析指标时，必须先向用户提问澄清，\n在用户回答之前不要调用任何工具。\n\nAfter clarification, use hosted web search for current facts and cite\nsources, and use the hosted Python/code-interpreter tool for quantitative\nanalysis; do not claim a calculation was run unless the response contains a\ncompleted code_interpreter_call.\n澄清之后：使用 web_search 获取最新事实并引用来源链接；所有定量计算必须通过\ncode_interpreter 实际执行，不得口算或声称运行了代码。",
+    "metadata": {},
+    "presence_penalty": 0.0,
+    "usage": {
+      "input_tokens_details": {
+        "cached_tokens": 2816
+      },
+      "x_details": [
+        {
+          "plugins": {
+            "code_interpreter": {
+              "count": 1
+            },
+            "web_search": {
+              "count": 1
+            }
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 2816
+          },
+          "total_tokens": 7501,
+          "x_billing_type": "response_api",
+          "output_tokens": 1234,
+          "input_tokens": 6267,
+          "output_tokens_details": {
+            "reasoning_tokens": 459
+          }
+        }
+      ],
+      "total_tokens": 7501,
+      "output_tokens": 1234,
+      "x_tools": {
+        "code_interpreter": {
+          "count": 1
+        },
+        "web_search": {
+          "count": 1
+        }
+      },
+      "input_tokens": 6267,
+      "output_tokens_details": {
+        "reasoning_tokens": 459
+      }
+    },
+    "created_at": 1791705251,
+    "store": true,
+    "tools": [
+      {
+        "type": "web_search"
+      },
+      {
+        "type": "code_interpreter"
+      }
+    ],
+    "output": [
+      {
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "用户要求搜索澳大利亚与新西兰的首都坐标，然后用Python计算距离，并附上来源。\n\n首先，我需要明确：\n- 澳大利亚的首都是堪培拉（Canberra）\n- 新西兰的首都是惠灵顿（Wellington）\n\n我需要搜索这两个城市的精确坐标，然后用Python计算它们之间的距离（通常使用Haversine公式计算球面距离）。\n\n这个请求是明确的：\n- 数据源：通过网络搜索获取坐标\n- 计算内容：两个首都之间的距离\n- 输出要求：附来源\n\n不需要澄清，我可以直接开始搜索坐标信息。"
+          }
+        ],
+        "type": "reasoning",
+        "id": "msg_742f96f2-498b-4ab8-86a4-bf8ca0a4612f"
+      },
+      {
+        "action": {
+          "sources": [
+            {
+              "type": "url",
+              "url": "https://www.latlong.net/place/canberra-australia-29466.html"
+            },
+            {
+              "type": "url",
+              "url": "https://en.wikipedia.org/wiki/Canberra"
+            },
+            {
+              "type": "url",
+              "url": "https://latitudelongitude.org/au/canberra/"
+            },
+            {
+              "type": "url",
+              "url": "https://www.mapsofworld.com/lat_long/canberra.html"
+            },
+            {
+              "type": "url",
+              "url": "https://www.sitesatlas.com/city/AS-Canberra/"
+            },
+            {
+              "type": "url",
+              "url": "https://latitude.to/articles-by-country/au/australia/400/canberra"
+            },
+            {
+              "type": "url",
+              "url": "https://wiki.openstreetmap.org/wiki/Canberra"
+            },
+            {
+              "type": "url",
+              "url": "https://www.latlong.net/place/australian-capital-territory-australia-12948.html"
+            },
+            {
+              "type": "url",
+              "url": "https://www.drivingdirectionsandmaps.com/canberra-google-maps/"
+            },
+            {
+              "type": "url",
+              "url": "https://www.geodatos.net/en/coordinates/australia/canberra"
+            },
+            {
+              "type": "url",
+              "url": "https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html"
+            },
+            {
+              "type": "url",
+              "url": "https://latitudelongitude.org/nz/wellington/"
+            },
+            {
+              "type": "url",
+              "url": "https://en.wikipedia.org/wiki/Wellington"
+            },
+            {
+              "type": "url",
+              "url": "https://latitude.to/articles-by-country/nz/new-zealand/569/wellington"
+            },
+            {
+              "type": "url",
+              "url": "https://www.mapsofworld.com/lat_long/newzealand-lat-long.html"
+            },
+            {
+              "type": "url",
+              "url": "https://www.latlong.net/place/national-library-of-new-zealand-wellington-new-zealand-22198.html"
+            },
+            {
+              "type": "url",
+              "url": "https://science.nasa.gov/earth/earth-observatory/wellington-new-zealand-8294/"
+            },
+            {
+              "type": "url",
+              "url": "https://time-ok.com/coordinates/wellington"
+            },
+            {
+              "type": "url",
+              "url": "https://geloky.com/geocoding/place/Wellington+City+New+Zealand"
+            },
+            {
+              "type": "url",
+              "url": "https://www.mappr.co/location/new-zealand/"
+            }
+          ],
+          "type": "search",
+          "queries": [
+            "Canberra Australia capital coordinates latitude longitude",
+            "Wellington New Zealand capital coordinates latitude longitude"
+          ],
+          "query": "Canberra Australia capital coordinates latitude longitude"
+        },
+        "id": "msg_f33ffc5d-9ce6-4003-b62c-1542c9ebd729",
+        "type": "web_search_call",
+        "status": "completed"
+      },
+      {
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "我已经获取了两个首都的坐标信息。让我整理一下：\n\n**堪培拉（澳大利亚首都）**：\n- 纬度：-35.282001（或约 -35.28°）\n- 经度：149.128998（或约 149.13°）\n- 来源：latlong.net, Wikipedia等\n\n**惠灵顿（新西兰首都）**：\n- 纬度：-41.294769（或约 -41.29°）\n- 经度：174.771973（或约 174.77°）\n- 来源：latlong.net, Wikipedia等\n\n现在我需要用Python计算这两个城市之间的距离。我将使用Haversine公式来计算球面距离。\n\n让我编写Python代码来计算距离。"
+          }
+        ],
+        "type": "reasoning",
+        "id": "msg_a0aca685-8168-4def-8c07-4ac156451368"
+      },
+      {
+        "outputs": [
+          {
+            "type": "logs",
+            "logs": "```\n澳大利亚首都堪培拉坐标: -35.282001°, 149.128998°\n新西兰首都惠灵顿坐标: -41.294769°, 174.771973°\n\n两首都之间的距离:\n  2325.99 公里\n  1445.30 英里\n  1255.93 海里\n\n```"
+          }
+        ],
+        "code": "import math\n\n# 堪培拉坐标（澳大利亚首都）\ncanberra_lat = -35.282001\ncanberra_lon = 149.128998\n\n# 惠灵顿坐标（新西兰首都）\nwellington_lat = -41.294769\nwellington_lon = 174.771973\n\n# 地球平均半径（公里）\nR = 6371.0\n\n# 将角度转换为弧度\nlat1_rad = math.radians(canberra_lat)\nlon1_rad = math.radians(canberra_lon)\nlat2_rad = math.radians(wellington_lat)\nlon2_rad = math.radians(wellington_lon)\n\n# 计算纬度和经度差值\ndlat = lat2_rad - lat1_rad\ndlon = lon2_rad - lon1_rad\n\n# Haversine公式\na = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2\nc = 2 * math.asin(math.sqrt(a))\n\n# 计算距离\ndistance_km = R * c\ndistance_miles = distance_km * 0.621371\n\nprint(f\"澳大利亚首都堪培拉坐标: {canberra_lat}°, {canberra_lon}°\")\nprint(f\"新西兰首都惠灵顿坐标: {wellington_lat}°, {wellington_lon}°\")\nprint(f\"\\n两首都之间的距离:\")\nprint(f\"  {distance_km:.2f} 公里\")\nprint(f\"  {distance_miles:.2f} 英里\")\nprint(f\"  {distance_km/1.852:.2f} 海里\")\n",
+        "id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+        "type": "code_interpreter_call",
+        "container_id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+        "status": "completed"
+      },
+      {
+        "summary": [
+          {
+            "type": "summary_text",
+            "text": "完美！我已经成功计算出了两个首都之间的距离。现在我需要整理所有信息，包括坐标来源和计算结果，以清晰的格式呈现给用户。\n\n让我总结一下：\n- 堪培拉坐标：-35.282001°, 149.128998°\n- 惠灵顿坐标：-41.294769°, 174.771973°\n- 距离：约2326公里（1445英里，1256海里）\n\n来源信息：\n- 堪培拉坐标来自 latlong.net 和 Wikipedia\n- 惠灵顿坐标来自 latlong.net 和 Wikipedia\n"
+          }
+        ],
+        "type": "reasoning",
+        "id": "msg_7ffdaba5-e203-41f2-b0db-4ce17b43f82a"
+      },
+      {
+        "id": "msg_986815a9-ed56-4bd7-a50f-f60f2fdf6566",
+        "role": "assistant",
+        "type": "message",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "text": "## 澳大利亚与新西兰首都坐标及距离计算\n\n### 首都坐标\n\n**澳大利亚首都 - 堪培拉（Canberra）**\n- 纬度：-35.282001°\n- 经度：149.128998°\n- 来源：[latlong.net](https://www.latlong.net/place/canberra-australia-29466.html) | [Wikipedia](https://en.wikipedia.org/wiki/Canberra)\n\n**新西兰首都 - 惠灵顿（Wellington）**\n- 纬度：-41.294769°\n- 经度：174.771973°\n- 来源：[latlong.net](https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html) | [Wikipedia](https://en.wikipedia.org/wiki/Wellington)\n\n### 距离计算结果\n\n使用Haversine公式（球面距离公式）计算得出：\n\n- **2,325.99 公里**\n- **1,445.30 英里**\n- **1,255.93 海里**\n\n### 计算方法\n\n采用Haversine公式计算地球表面两点间的大圆距离，使用地球平均半径6,371公里进行计算。该公式考虑了地球的球面形状，适用于计算中长距离的地理坐标间距。"
+          }
+        ],
+        "status": "completed"
+      }
+    ],
+    "top_p": 1.0,
+    "completed_at": 1791705282,
+    "frequency_penalty": 0.0,
+    "parallel_tool_calls": true,
+    "background": false,
+    "temperature": 1.0,
+    "tool_choice": "auto",
+    "model": "qwen3.7-plus",
+    "service_tier": "default",
+    "id": "resp_b14a9e03-1813-927d-813f-aa8c3776c8cf",
+    "max_output_tokens": 4000,
+    "object": "response",
+    "status": "completed"
+  },
+  "output_items": [
+    {
+      "summary": [
+        {
+          "type": "summary_text",
+          "text": "用户要求搜索澳大利亚与新西兰的首都坐标，然后用Python计算距离，并附上来源。\n\n首先，我需要明确：\n- 澳大利亚的首都是堪培拉（Canberra）\n- 新西兰的首都是惠灵顿（Wellington）\n\n我需要搜索这两个城市的精确坐标，然后用Python计算它们之间的距离（通常使用Haversine公式计算球面距离）。\n\n这个请求是明确的：\n- 数据源：通过网络搜索获取坐标\n- 计算内容：两个首都之间的距离\n- 输出要求：附来源\n\n不需要澄清，我可以直接开始搜索坐标信息。"
+        }
+      ],
+      "type": "reasoning",
+      "id": "msg_742f96f2-498b-4ab8-86a4-bf8ca0a4612f"
+    },
+    {
+      "action": {
+        "sources": [
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/canberra-australia-29466.html"
+          },
+          {
+            "type": "url",
+            "url": "https://en.wikipedia.org/wiki/Canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://latitudelongitude.org/au/canberra/"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mapsofworld.com/lat_long/canberra.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.sitesatlas.com/city/AS-Canberra/"
+          },
+          {
+            "type": "url",
+            "url": "https://latitude.to/articles-by-country/au/australia/400/canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://wiki.openstreetmap.org/wiki/Canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/australian-capital-territory-australia-12948.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.drivingdirectionsandmaps.com/canberra-google-maps/"
+          },
+          {
+            "type": "url",
+            "url": "https://www.geodatos.net/en/coordinates/australia/canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html"
+          },
+          {
+            "type": "url",
+            "url": "https://latitudelongitude.org/nz/wellington/"
+          },
+          {
+            "type": "url",
+            "url": "https://en.wikipedia.org/wiki/Wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://latitude.to/articles-by-country/nz/new-zealand/569/wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mapsofworld.com/lat_long/newzealand-lat-long.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/national-library-of-new-zealand-wellington-new-zealand-22198.html"
+          },
+          {
+            "type": "url",
+            "url": "https://science.nasa.gov/earth/earth-observatory/wellington-new-zealand-8294/"
+          },
+          {
+            "type": "url",
+            "url": "https://time-ok.com/coordinates/wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://geloky.com/geocoding/place/Wellington+City+New+Zealand"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mappr.co/location/new-zealand/"
+          }
+        ],
+        "type": "search",
+        "queries": [
+          "Canberra Australia capital coordinates latitude longitude",
+          "Wellington New Zealand capital coordinates latitude longitude"
+        ],
+        "query": "Canberra Australia capital coordinates latitude longitude"
+      },
+      "id": "msg_f33ffc5d-9ce6-4003-b62c-1542c9ebd729",
+      "type": "web_search_call",
+      "status": "completed"
+    },
+    {
+      "summary": [
+        {
+          "type": "summary_text",
+          "text": "我已经获取了两个首都的坐标信息。让我整理一下：\n\n**堪培拉（澳大利亚首都）**：\n- 纬度：-35.282001（或约 -35.28°）\n- 经度：149.128998（或约 149.13°）\n- 来源：latlong.net, Wikipedia等\n\n**惠灵顿（新西兰首都）**：\n- 纬度：-41.294769（或约 -41.29°）\n- 经度：174.771973（或约 174.77°）\n- 来源：latlong.net, Wikipedia等\n\n现在我需要用Python计算这两个城市之间的距离。我将使用Haversine公式来计算球面距离。\n\n让我编写Python代码来计算距离。"
+        }
+      ],
+      "type": "reasoning",
+      "id": "msg_a0aca685-8168-4def-8c07-4ac156451368"
+    },
+    {
+      "outputs": [
+        {
+          "type": "logs",
+          "logs": "```\n澳大利亚首都堪培拉坐标: -35.282001°, 149.128998°\n新西兰首都惠灵顿坐标: -41.294769°, 174.771973°\n\n两首都之间的距离:\n  2325.99 公里\n  1445.30 英里\n  1255.93 海里\n\n```"
+        }
+      ],
+      "code": "import math\n\n# 堪培拉坐标（澳大利亚首都）\ncanberra_lat = -35.282001\ncanberra_lon = 149.128998\n\n# 惠灵顿坐标（新西兰首都）\nwellington_lat = -41.294769\nwellington_lon = 174.771973\n\n# 地球平均半径（公里）\nR = 6371.0\n\n# 将角度转换为弧度\nlat1_rad = math.radians(canberra_lat)\nlon1_rad = math.radians(canberra_lon)\nlat2_rad = math.radians(wellington_lat)\nlon2_rad = math.radians(wellington_lon)\n\n# 计算纬度和经度差值\ndlat = lat2_rad - lat1_rad\ndlon = lon2_rad - lon1_rad\n\n# Haversine公式\na = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2\nc = 2 * math.asin(math.sqrt(a))\n\n# 计算距离\ndistance_km = R * c\ndistance_miles = distance_km * 0.621371\n\nprint(f\"澳大利亚首都堪培拉坐标: {canberra_lat}°, {canberra_lon}°\")\nprint(f\"新西兰首都惠灵顿坐标: {wellington_lat}°, {wellington_lon}°\")\nprint(f\"\\n两首都之间的距离:\")\nprint(f\"  {distance_km:.2f} 公里\")\nprint(f\"  {distance_miles:.2f} 英里\")\nprint(f\"  {distance_km/1.852:.2f} 海里\")\n",
+      "id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+      "type": "code_interpreter_call",
+      "container_id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+      "status": "completed"
+    },
+    {
+      "summary": [
+        {
+          "type": "summary_text",
+          "text": "完美！我已经成功计算出了两个首都之间的距离。现在我需要整理所有信息，包括坐标来源和计算结果，以清晰的格式呈现给用户。\n\n让我总结一下：\n- 堪培拉坐标：-35.282001°, 149.128998°\n- 惠灵顿坐标：-41.294769°, 174.771973°\n- 距离：约2326公里（1445英里，1256海里）\n\n来源信息：\n- 堪培拉坐标来自 latlong.net 和 Wikipedia\n- 惠灵顿坐标来自 latlong.net 和 Wikipedia\n"
+        }
+      ],
+      "type": "reasoning",
+      "id": "msg_7ffdaba5-e203-41f2-b0db-4ce17b43f82a"
+    },
+    {
+      "id": "msg_986815a9-ed56-4bd7-a50f-f60f2fdf6566",
+      "role": "assistant",
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [],
+          "text": "## 澳大利亚与新西兰首都坐标及距离计算\n\n### 首都坐标\n\n**澳大利亚首都 - 堪培拉（Canberra）**\n- 纬度：-35.282001°\n- 经度：149.128998°\n- 来源：[latlong.net](https://www.latlong.net/place/canberra-australia-29466.html) | [Wikipedia](https://en.wikipedia.org/wiki/Canberra)\n\n**新西兰首都 - 惠灵顿（Wellington）**\n- 纬度：-41.294769°\n- 经度：174.771973°\n- 来源：[latlong.net](https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html) | [Wikipedia](https://en.wikipedia.org/wiki/Wellington)\n\n### 距离计算结果\n\n使用Haversine公式（球面距离公式）计算得出：\n\n- **2,325.99 公里**\n- **1,445.30 英里**\n- **1,255.93 海里**\n\n### 计算方法\n\n采用Haversine公式计算地球表面两点间的大圆距离，使用地球平均半径6,371公里进行计算。该公式考虑了地球的球面形状，适用于计算中长距离的地理坐标间距。"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "tool_calls": [
+    {
+      "action": {
+        "sources": [
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/canberra-australia-29466.html"
+          },
+          {
+            "type": "url",
+            "url": "https://en.wikipedia.org/wiki/Canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://latitudelongitude.org/au/canberra/"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mapsofworld.com/lat_long/canberra.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.sitesatlas.com/city/AS-Canberra/"
+          },
+          {
+            "type": "url",
+            "url": "https://latitude.to/articles-by-country/au/australia/400/canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://wiki.openstreetmap.org/wiki/Canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/australian-capital-territory-australia-12948.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.drivingdirectionsandmaps.com/canberra-google-maps/"
+          },
+          {
+            "type": "url",
+            "url": "https://www.geodatos.net/en/coordinates/australia/canberra"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html"
+          },
+          {
+            "type": "url",
+            "url": "https://latitudelongitude.org/nz/wellington/"
+          },
+          {
+            "type": "url",
+            "url": "https://en.wikipedia.org/wiki/Wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://latitude.to/articles-by-country/nz/new-zealand/569/wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mapsofworld.com/lat_long/newzealand-lat-long.html"
+          },
+          {
+            "type": "url",
+            "url": "https://www.latlong.net/place/national-library-of-new-zealand-wellington-new-zealand-22198.html"
+          },
+          {
+            "type": "url",
+            "url": "https://science.nasa.gov/earth/earth-observatory/wellington-new-zealand-8294/"
+          },
+          {
+            "type": "url",
+            "url": "https://time-ok.com/coordinates/wellington"
+          },
+          {
+            "type": "url",
+            "url": "https://geloky.com/geocoding/place/Wellington+City+New+Zealand"
+          },
+          {
+            "type": "url",
+            "url": "https://www.mappr.co/location/new-zealand/"
+          }
+        ],
+        "type": "search",
+        "queries": [
+          "Canberra Australia capital coordinates latitude longitude",
+          "Wellington New Zealand capital coordinates latitude longitude"
+        ],
+        "query": "Canberra Australia capital coordinates latitude longitude"
+      },
+      "id": "msg_f33ffc5d-9ce6-4003-b62c-1542c9ebd729",
+      "type": "web_search_call",
+      "status": "completed"
+    },
+    {
+      "outputs": [
+        {
+          "type": "logs",
+          "logs": "```\n澳大利亚首都堪培拉坐标: -35.282001°, 149.128998°\n新西兰首都惠灵顿坐标: -41.294769°, 174.771973°\n\n两首都之间的距离:\n  2325.99 公里\n  1445.30 英里\n  1255.93 海里\n\n```"
+        }
+      ],
+      "code": "import math\n\n# 堪培拉坐标（澳大利亚首都）\ncanberra_lat = -35.282001\ncanberra_lon = 149.128998\n\n# 惠灵顿坐标（新西兰首都）\nwellington_lat = -41.294769\nwellington_lon = 174.771973\n\n# 地球平均半径（公里）\nR = 6371.0\n\n# 将角度转换为弧度\nlat1_rad = math.radians(canberra_lat)\nlon1_rad = math.radians(canberra_lon)\nlat2_rad = math.radians(wellington_lat)\nlon2_rad = math.radians(wellington_lon)\n\n# 计算纬度和经度差值\ndlat = lat2_rad - lat1_rad\ndlon = lon2_rad - lon1_rad\n\n# Haversine公式\na = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2\nc = 2 * math.asin(math.sqrt(a))\n\n# 计算距离\ndistance_km = R * c\ndistance_miles = distance_km * 0.621371\n\nprint(f\"澳大利亚首都堪培拉坐标: {canberra_lat}°, {canberra_lon}°\")\nprint(f\"新西兰首都惠灵顿坐标: {wellington_lat}°, {wellington_lon}°\")\nprint(f\"\\n两首都之间的距离:\")\nprint(f\"  {distance_km:.2f} 公里\")\nprint(f\"  {distance_miles:.2f} 英里\")\nprint(f\"  {distance_km/1.852:.2f} 海里\")\n",
+      "id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+      "type": "code_interpreter_call",
+      "container_id": "msg_7c5dd594-36a1-400e-979c-99695500b7db",
+      "status": "completed"
+    }
+  ],
+  "citations": [
+    {
+      "type": "url_citation",
+      "url": "https://www.latlong.net/place/canberra-australia-29466.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://en.wikipedia.org/wiki/Canberra"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://latitudelongitude.org/au/canberra/"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.mapsofworld.com/lat_long/canberra.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.sitesatlas.com/city/AS-Canberra/"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://latitude.to/articles-by-country/au/australia/400/canberra"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://wiki.openstreetmap.org/wiki/Canberra"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.latlong.net/place/australian-capital-territory-australia-12948.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.drivingdirectionsandmaps.com/canberra-google-maps/"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.geodatos.net/en/coordinates/australia/canberra"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.latlong.net/place/wellington-the-capital-city-of-new-zealand-34222.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://latitudelongitude.org/nz/wellington/"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://en.wikipedia.org/wiki/Wellington"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://latitude.to/articles-by-country/nz/new-zealand/569/wellington"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.mapsofworld.com/lat_long/newzealand-lat-long.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.latlong.net/place/national-library-of-new-zealand-wellington-new-zealand-22198.html"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://science.nasa.gov/earth/earth-observatory/wellington-new-zealand-8294/"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://time-ok.com/coordinates/wellington"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://geloky.com/geocoding/place/Wellington+City+New+Zealand"
+    },
+    {
+      "type": "url_citation",
+      "url": "https://www.mappr.co/location/new-zealand/"
+    }
+  ],
+  "usage": {
+    "input_tokens_details": {
+      "cached_tokens": 2816
+    },
+    "x_details": [
+      {
+        "plugins": {
+          "code_interpreter": {
+            "count": 1
+          },
+          "web_search": {
+            "count": 1
+          }
+        },
+        "prompt_tokens_details": {
+          "cached_tokens": 2816
+        },
+        "total_tokens": 7501,
+        "x_billing_type": "response_api",
+        "output_tokens": 1234,
+        "input_tokens": 6267,
+        "output_tokens_details": {
+          "reasoning_tokens": 459
+        }
+      }
+    ],
+    "total_tokens": 7501,
+    "output_tokens": 1234,
+    "x_tools": {
+      "code_interpreter": {
+        "count": 1
+      },
+      "web_search": {
+        "count": 1
+      }
+    },
+    "input_tokens": 6267,
+    "output_tokens_details": {
+      "reasoning_tokens": 459
+    }
+  },
+  "model": "qwen3.7-plus",
+  "requested_model": "qwen3.7-plus",
+  "provider": "dashscope",
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "response_id": "resp_b14a9e03-1813-927d-813f-aa8c3776c8cf",
+  "status": "completed",
+  "elapsed_seconds": 32.532,
+  "temperature_omitted_for_reasoning_model": true
+}
