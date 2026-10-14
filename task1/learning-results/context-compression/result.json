@@ -1,0 +1,15 @@
+{
+  "scope": "local_text_history_compression",
+  "live_search_executed": false,
+  "model": "kimi-k3",
+  "source_file": "chapter2/system-hint/config.py",
+  "query": "概括配置文件的五项状态提示功能、默认开关和模型配置读取方式。",
+  "original_characters": 4377,
+  "compressed_characters": 1121,
+  "original_tokens_estimate": 956,
+  "compressed_tokens_estimate": 519,
+  "token_estimator": "cl100k_base，非 Moonshot 精确计费 token",
+  "compressed_content": "# AgentConfig 配置文件摘要\n\n## 五项系统状态提示功能（默认全部开启）\n通过布尔开关控制，均可由环境变量覆盖（默认值均为 `\"true\"`）：\n\n| 配置项 | 环境变量 | 默认值 |\n|---|---|---|\n| `enable_timestamps` 时间戳 | `ENABLE_TIMESTAMPS` | True |\n| `enable_tool_counter` 工具计数器 | `ENABLE_TOOL_COUNTER` | True |\n| `enable_todo_list` 待办列表 | `ENABLE_TODO_LIST` | True |\n| `enable_detailed_errors` 详细错误 | `ENABLE_DETAILED_ERRORS` | True |\n| `enable_system_state` 系统状态 | `ENABLE_SYSTEM_STATE` | True |\n\n## 模型配置读取方式（`from_env()` 类方法）\n- **Provider**：读 `LLM_PROVIDER`（默认 `\"kimi\"`），经 `canonical_provider` 规范化；`validate()` 仅允许 `kimi`、`moonshot`、`dashscope`。\n- **API Key**：从共享注册表 `PROVIDERS.get(provider, PROVIDERS[\"kimi\"]).api_key()` 获取，回退到 `OPENROUTER_API_KEY`；`validate()` 要求非空。\n- **模型**：读 `LLM_MODEL`（默认为 None）。\n\n## 其他配置项\n- 格式：`timestamp_format`（默认 `%Y-%m-%d %H:%M:%S`）、`simulate_time_delay`（默认 False）\n- 执行：`max_iterations`（默认 20，≥1）、`verbose`（默认 False）、`timeout`（默认 30 秒，≥1）\n\n## 预设与入口\n- `PRESETS` 提供四档预设：**full**（全开）、**minimal**（全关）、**debug**（全开+verbose）、**demo**（全开+模拟延迟）。\n- `get_config(preset)`：命中预设时返回该预设，并注入 `KIMI_API_KEY` / `MOONSHOT_API_KEY` / `OPENROUTER_API_KEY`；否则回退到 `AgentConfig.from_env()`。",
+  "strategy": "windowed_context",
+  "timestamp": "2026-10-14T22:47:57.772062"
+}
