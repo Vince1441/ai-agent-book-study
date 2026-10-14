@@ -1,0 +1,69 @@
+日志来源：从已保存的 result.json 提取的指标与学习曲线摘要；原始终端输出没有保存。
+Training episodes: 10000
+Training victories: 4510
+Evaluation victories: 100
+Evaluation victory rate: 1
+Q-table states: 142
+Learning curve:
+[
+  {
+    "episode": 1000,
+    "victory_rate": 0.003,
+    "q_table_size": 123,
+    "epsilon": 0.606454822840097
+  },
+  {
+    "episode": 2000,
+    "victory_rate": 0.0,
+    "q_table_size": 123,
+    "epsilon": 0.3677874521460121
+  },
+  {
+    "episode": 3000,
+    "victory_rate": 0.001,
+    "q_table_size": 126,
+    "epsilon": 0.22304647413401948
+  },
+  {
+    "episode": 4000,
+    "victory_rate": 0.001,
+    "q_table_size": 127,
+    "epsilon": 0.13526760995605422
+  },
+  {
+    "episode": 5000,
+    "victory_rate": 0.001,
+    "q_table_size": 128,
+    "epsilon": 0.1
+  },
+  {
+    "episode": 6000,
+    "victory_rate": 0.559,
+    "q_table_size": 137,
+    "epsilon": 0.1
+  },
+  {
+    "episode": 7000,
+    "victory_rate": 0.97,
+    "q_table_size": 138,
+    "epsilon": 0.1
+  },
+  {
+    "episode": 8000,
+    "victory_rate": 0.996,
+    "q_table_size": 138,
+    "epsilon": 0.1
+  },
+  {
+    "episode": 9000,
+    "victory_rate": 0.998,
+    "q_table_size": 139,
+    "epsilon": 0.1
+  },
+  {
+    "episode": 10000,
+    "victory_rate": 0.981,
+    "q_table_size": 142,
+    "epsilon": 0.1
+  }
+]
