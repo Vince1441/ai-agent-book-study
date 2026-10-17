@@ -1,0 +1,27 @@
+================================================================================
+USER MEMORY EVALUATION REPORT
+================================================================================
+
+
+LAYER1 - Basic Recall & Direct Retrieval
+------------------------------------------------------------
+Structured Rubric Pass Rate: 1/1 (100.0%)
+Average Reward: 1.000/1.000
+
+Average precision grade: 4.00/4.00
+Average recall grade: 4.00/4.00
+Average reasoning grade: 4.00/4.00
+Average proactivity grade: 4.00/4.00
+Hallucination vetoes: 0/1
+
+  [✓ PASS] Bank Account Setup - Personal Details Retrieval (Reward: 1.000)
+
+================================================================================
+OVERALL SUMMARY
+================================================================================
+Total Tests: 1
+Passed: 1
+Failed: 0
+Structured Rubric Pass Rate: 100.0%
+Average Reward: 1.000/1.000
+Hallucination Vetoes: 0
