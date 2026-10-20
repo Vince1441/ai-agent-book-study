@@ -1,0 +1,17 @@
+{
+  "checks_passed": 6,
+  "calculation": 4000,
+  "full_output_lines": 260,
+  "full_output_sha256": "b70959e7ed6d911a82d2f39741514237e2901af8b2d8d415cf6052ddbabea5d3",
+  "approval_receipts": 1,
+  "workspace_boundary_enforced": true,
+  "summary_generated": true,
+  "not_executed": [
+    "code_interpreter",
+    "Docker sandbox",
+    "Google Calendar",
+    "GitHub PR tool",
+    "browser and desktop/mobile tools",
+    "multi-language execution"
+  ]
+}
