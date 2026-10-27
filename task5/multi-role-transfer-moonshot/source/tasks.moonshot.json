@@ -1,0 +1,11 @@
+[
+  {
+    "id": "moonshot-calculation",
+    "kind": "complex",
+    "prompt": "这是工具协作验证。必须先从 triage 切换到 data_analysis，实际调用 calculate 计算 (125+375)*8，最终回答4000。禁止直接心算回答，禁止联网检索。Skill 路径先加载 triage 再加载 data_analysis，然后调用 calculate。",
+    "required_capabilities": ["triage", "data_analysis"],
+    "required_tools": ["calculate"],
+    "forbidden_tools": ["web_search"],
+    "required_output_patterns": ["4000"]
+  }
+]

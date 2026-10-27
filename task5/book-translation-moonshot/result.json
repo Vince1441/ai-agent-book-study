@@ -1,0 +1,53 @@
+{
+  "model": "kimi-k3",
+  "completed": true,
+  "chapters_per_mode": 4,
+  "started_at_utc": "2026-10-27T15:03:42.340371+00:00",
+  "finished_at_utc": "2026-10-27T15:06:26.700084+00:00",
+  "files": [
+    {
+      "path": "translation\\orchestration\\chapter1_zh.md",
+      "sha256": "efd913ff6ce3bdb00ee8a7ff7ae62da05ad9d8b0bcc88ba89b237bcbaad01da0"
+    },
+    {
+      "path": "translation\\orchestration\\chapter2_zh.md",
+      "sha256": "5d0df2725330363f41873820fac80fdca61fdffaab06b246056bc71d3d1c1fc8"
+    },
+    {
+      "path": "translation\\orchestration\\chapter3_zh.md",
+      "sha256": "45f2f85f282aee1304647c9ebd6b096cd69819cdc271faded8b25d1766da8210"
+    },
+    {
+      "path": "translation\\orchestration\\chapter4_zh.md",
+      "sha256": "06147f8907d17e2396883e0375909497ee6d00989ec4d66f63912c2d12ba789f"
+    },
+    {
+      "path": "translation\\orchestration\\glossary.json",
+      "sha256": "6bcb1f7e1bfc211b1aeb7d77d7350905fa6505e4a4be83831cdf1c71f3c99e58"
+    },
+    {
+      "path": "translation\\orchestration\\proofreading_report.json",
+      "sha256": "69e8793957c4e94b0e20748eed6a22291cce12f85a159552f99042b98468172c"
+    },
+    {
+      "path": "translation\\single_agent\\chapter1_zh.md",
+      "sha256": "6eb978c5076bb88eed61389d7deb980be3266b42dd84b1a62d58e27a489b3384"
+    },
+    {
+      "path": "translation\\single_agent\\chapter2_zh.md",
+      "sha256": "a014ca3f116240e36d156f616c85a55d47498c14a7a93b38d8acbea661edf408"
+    },
+    {
+      "path": "translation\\single_agent\\chapter3_zh.md",
+      "sha256": "b4427cfb6e87980bbfee5b392dd557fb4e08ce2df2856ed97f3f60fbfacf8810"
+    },
+    {
+      "path": "translation\\single_agent\\chapter4_zh.md",
+      "sha256": "34137839a965452f82dee035da72799ddbc06a7f60386ed8f037bd1a7df290ff"
+    },
+    {
+      "path": "translation\\single_agent\\progress.json",
+      "sha256": "67c7ca8be158925a2d79f2dafb4d60e1307d924c8c9564a74827ca5b31079f89"
+    }
+  ]
+}

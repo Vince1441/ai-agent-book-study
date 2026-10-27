@@ -1,0 +1,124 @@
+运行命令：D:\AI\ai-agent-book\.venv\Scripts\python.exe -X utf8 -u demo.py --out-dir D:\AI\ai-agent-book\learning-results\task5\book-translation-moonshot\translation
+载入 4 个章节：['Chapter 1: Foundations of LLM Inference', 'Chapter 2: The Transformer and Attention', 'Chapter 3: Optimizing Inference Latency', 'Chapter 4: Fine-tuning and Deployment']  （英文 → 中文）
+
+========================================================================
+【管理者模式】四 Agent 协作实时轨迹
+========================================================================
+  Manager：制定计划并调度四个专职 Agent（各自独立上下文）
+      计划 1. 调用 Glossary Agent 生成术语表并落盘
+      计划 2. 逐章调用 Translation Agent（各自独立上下文，共享术语表文件）
+      计划 3. 调用 Proofreading Agent 做一致性审校并落盘报告
+      计划 4. 依据报告决定是否发回个别章节修订
+  Manager → Glossary Agent：读全书（4 章）抽取共享术语表
+  Glossary Agent ✓：确定 10 个术语 → glossary.json（Manager 只记路径，术语表正文留在文件系统）
+  Manager → Translation Agent：翻译《Chapter 1: Foundations of LLM Inference》（独立上下文，仅见本章 + 术语表）
+  Translation Agent ✓：chapter1_zh.md（上下文 534 tok，译文落盘不回传 Manager）
+  Manager → Translation Agent：翻译《Chapter 2: The Transformer and Attention》（独立上下文，仅见本章 + 术语表）
+  Translation Agent ✓：chapter2_zh.md（上下文 498 tok，译文落盘不回传 Manager）
+  Manager → Translation Agent：翻译《Chapter 3: Optimizing Inference Latency》（独立上下文，仅见本章 + 术语表）
+  Translation Agent ✓：chapter3_zh.md（上下文 504 tok，译文落盘不回传 Manager）
+  Manager → Translation Agent：翻译《Chapter 4: Fine-tuning and Deployment》（独立上下文，仅见本章 + 术语表）
+  Translation Agent ✓：chapter4_zh.md（上下文 525 tok，译文落盘不回传 Manager）
+  Manager → Proofreading Agent：读全部译文 + 术语表做一致性/流畅性审校
+  Proofreading Agent ✓：7 处问题 → proofreading_report.json
+  Manager：读审校报告摘要（不读正文）→ 决策哪些章节需发回修订
+  Manager 决策 ✓：需修订章节 ['Chapter 1: Foundations of LLM Inference', 'Chapter 2: The Transformer and Attention', 'Chapter 3: Optimizing Inference Latency', 'Chapter 4: Fine-tuning and Deployment']
+  Manager → Translation Agent：修订《Chapter 1: Foundations of LLM Inference》（附审校意见）
+  Manager → Translation Agent：修订《Chapter 2: The Transformer and Attention》（附审校意见）
+  Manager → Translation Agent：修订《Chapter 3: Optimizing Inference Latency》（附审校意见）
+  Manager → Translation Agent：修订《Chapter 4: Fine-tuning and Deployment》（附审校意见）
+  Manager：全部完成，产物目录 D:\AI\ai-agent-book\learning-results\task5\book-translation-moonshot\translation\orchestration
+
+========================================================================
+【管理者模式】各 Agent 上下文 token 消耗
+========================================================================
+Agent             调用次数       输入tok       输出tok       上下文峰值
+------------------------------------------------------------------------
+Glossary             1        1292         532        1292
+Translation          8        4210        2145         556
+Proofreading         1        1333         737        1333
+Manager              1         990         146         990
+------------------------------------------------------------------------
+合计                                              总 token：11385
+
+Manager 上下文峰值（只存任务/计划/调用记录/文件索引）：1259 tokens
+术语表（共享文件，各 Translation Agent 引用同一份）：
+    token → 词元（名词）
+    embedding → 嵌入向量（名词）
+    prompt → 提示词（名词）
+    inference → 推理（名词）
+    latency → 时延（名词）
+    transformer → Transformer（变换器）（名词）
+    attention → 注意力机制（名词）
+    KV cache → 键值缓存（名词）
+    throughput → 吞吐量（名词）
+    fine-tuning → 微调（名词）
+审校报告 summary：整体翻译质量较高，术语表中的核心术语（词元、嵌入向量、提示词、推理、时延、吞吐量、键值缓存、微调）在各章使用一致，章节间逻辑衔接自然。主要问题集中在三处未处理的[待审]标记（query/key/value 与 batching），属于待确认
+
+========================================================================
+【单 Agent 模式】主上下文 token 消耗
+========================================================================
+Agent             调用次数       输入tok       输出tok       上下文峰值
+------------------------------------------------------------------------
+SingleAgent          4        5008        1108        2126
+------------------------------------------------------------------------
+合计                                              总 token：6116
+
+========================================================================
+术语一致性对比（确定性字符串匹配，非模型打分）
+========================================================================
+
+[管理者模式] 术语一致性：8/9 个术语全书统一（89%）
+  - token        实际用到：词元(4章)  [一致]
+  - embedding    实际用到：嵌入(3章)  [一致]
+  - prompt       实际用到：提示词(4章)  [一致]
+  - inference    实际用到：推理(4章)  [一致]
+  - latency      实际用到：时延(4章)  [一致]
+  - attention    实际用到：注意力(2章)  [一致]
+  - transformer  实际用到：Transformer(1章) / 变换器(1章)  [不一致 <===]
+  - throughput   实际用到：吞吐量(2章)  [一致]
+  - fine-tuning  实际用到：微调(1章)  [一致]
+
+[单 Agent 模式] 术语一致性：7/9 个术语全书统一（78%）
+  - token        实际用到：词元(2章) / token(4章)  [不一致 <===]
+  - embedding    实际用到：嵌入(3章)  [一致]
+  - prompt       实际用到：提示词(2章)  [一致]
+  - inference    实际用到：推理(4章)  [一致]
+  - latency      实际用到：延迟(4章)  [一致]
+  - attention    实际用到：注意力(2章)  [一致]
+  - transformer  实际用到：Transformer(1章) / 变换器(1章)  [不一致 <===]
+  - throughput   实际用到：吞吐量(2章)  [一致]
+  - fine-tuning  实际用到：微调(1章)  [一致]
+
+========================================================================
+术语表遵从率对比：编辑部指定术语能否贯彻全书
+========================================================================
+（管理者模式把指定术语写入共享术语表并强制下发；单 Agent 看不到术语表）
+
+指定术语          规定译法      默认译法              管理者(遵从/出现)       单Agent(遵从/出现)
+------------------------------------------------------------------------------
+token         词元        标记                       4/4                 2/2
+prompt        提示词       提示                       4/4                 2/2
+latency       时延        延迟                       4/4                 0/4
+embedding     嵌入向量      嵌入                       3/3                 0/3
+------------------------------------------------------------------------------
+术语表遵从率：管理者模式 100%  vs  单 Agent 36%
+
+========================================================================
+核心对比表：管理者模式 vs 单 Agent 模式
+========================================================================
+指标                                         管理者模式         单 Agent
+------------------------------------------------------------------------
+主/Manager 上下文峰值(tokens)                     1259            2126
+Manager LLM 决策调用上下文(tokens)                  990               —
+全流程总 token 消耗                              11385            6116
+术语内部一致率                                      89%             78%
+指定术语遵从率                                     100%             36%
+参与 Agent 种类数                                   4               1
+------------------------------------------------------------------------
+
+结论：单 Agent 主上下文峰值是管理者模式 Manager 上下文的 1.7 倍。
+Manager 只保存任务/计划/调用记录/文件索引，完整译文全部落盘到文件系统，
+因此无论书有多长，Manager 上下文都基本恒定 —— 这就是控制上下文膨胀的关键。
+
+产物目录：D:\AI\ai-agent-book\learning-results\task5\book-translation-moonshot\translation

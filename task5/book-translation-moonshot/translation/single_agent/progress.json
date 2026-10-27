@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "fingerprint": "2d59a8e1efcc0c8500da8d842e26659eba6c254ccc26b8f984b41f9680269c05",
+  "provider": "Moonshot",
+  "model": "kimi-k3",
+  "thinking": "provider_default",
+  "translations": {
+    "Chapter 1: Foundations of LLM Inference": "# 第 1 章：LLM 推理基础\n\n大语言模型在对任何内容进行推理之前，会先把文本转换成数字。每一段文本首先被切分为一个个 **token（词元）**，这是模型处理的最小单位。随后，每个 token 会被映射为一个 **embedding（嵌入）**，即一个在高维空间中捕捉其含义的稠密向量。\n\n当用户发送请求时，他们输入的文本称为 **prompt（提示词）**。让模型基于该 prompt 运行并生成回答的过程称为 **inference（推理）**。从发送 prompt 到收到第一个响应之间的时间，就是用户能直接感受到的 **latency（延迟）**。\n\n一个最简的推理调用如下所示：\n\n```python\ndef generate(prompt: str, model) -> str:\n    tokens = model.tokenize(prompt)      # split prompt into tokens\n    embeddings = model.embed(tokens)     # map each token to an embedding\n    output = model.forward(embeddings)   # run inference\n    return model.detokenize(output)\n```\n\n有两个数字主导着用户体验。第一是 prompt 中的 token 数量，因为 prompt 越长，消耗的计算量就越大。第二是第一个 token 的延迟，因为首 token 太慢会让整个系统显得迟钝。在本书中，我们会反复回到这些概念：token、embedding、prompt、inference 和 latency。现在就把它们的定义弄清楚，能为后面避免很多困惑。",
+    "Chapter 2: The Transformer and Attention": "# 第 2 章：Transformer 与注意力机制\n\n现代语言模型建立在 **transformer（变换器）** 架构之上。其核心思想是 **attention（注意力）**：模型不再严格地按从左到右的顺序读取序列，而是让每个 token 都能\"看到\"其他所有 token，并判断哪些 token 更重要。正因如此，transformer 才能把一个代词与许多 token 之前出现的名词联系起来。\n\n注意力机制作用于每个 token 的 **embedding（嵌入）** 之上。对于每个 token，模型会计算三个向量——查询（query）、键（key）和值（value）——并用它们来权衡每个 token 应该对其他 token 投入多少关注。\n\n```python\ndef attention(query, key, value):\n    scores = query @ key.T          # similarity between tokens\n    weights = softmax(scores)       # attention weights\n    return weights @ value          # weighted embedding\n```\n\n由于注意力机制要将每个 token 与其他所有 token 进行比较，其开销会随着 prompt 变长而迅速增长。这正是我们将在下一章中着手解决的延迟问题的根源。尽管如此，注意力机制正是 transformer 强大能力的来源：在推理过程中，它让模型能够在整个 prompt 范围内灵活地传递信息，而不是被限制在一条固定的流水线中。",
+    "Chapter 3: Optimizing Inference Latency": "# 第 3 章：优化推理延迟\n\n模型能跑起来之后，下一场战役就是速度。目标是在降低 **latency（延迟）** 的同时提高 **throughput（吞吐量）**——即系统每秒完成的请求数量。这两者往往相互制约。\n\n最重要的技巧是 **KV cache（KV 缓存）**。在推理过程中，如果不做优化，模型每生成一步都要对所有之前的 token 重新计算一遍注意力。通过缓存过去 token 的键向量和值向量，模型只需处理最新的 token，从而大幅降低了长 prompt 场景下的延迟。\n\n```python\ndef decode_step(new_token, kv_cache):\n    q, k, v = project(new_token)         # only the new token\n    kv_cache.append(k, v)                # reuse past keys and values\n    return attention(q, kv_cache.keys, kv_cache.values)\n```\n\n第二个技巧是 **batching（批处理）**：将多个 prompt 组合在一起，让硬件保持高利用率。更大的批次能提高吞吐量，但可能会增加单个请求的延迟，因此服务系统需要仔细调节批次大小。\n\n其中的道理在于，推理性能是一种平衡。我们避免重复计算的每一个 token，以及我们合理批处理的每一个 prompt，都在推动系统同时朝着更低延迟和更高吞吐量的方向前进。",
+    "Chapter 4: Fine-tuning and Deployment": "# 第 4 章：微调与部署\n\n通用模型很少能直接满足特定产品的需求。通常的解决办法是 **fine-tuning（微调）**：在一个规模较小、针对特定任务的数据集上继续训练模型，使其在保持通用能力的同时适应你的领域。\n\n微调会改变模型将 **prompt（提示词）** 转化为回答的方式，但不会改变基本流程：文本变成 **token（词元）**，每个 token 变成 **embedding（嵌入）**，再由 **inference（推理）** 生成结果。改变的是模型学到的权重。\n\n```python\ndef fine_tune(model, dataset):\n    for prompt, target in dataset:\n        loss = model.loss(prompt, target)   # compare output to target\n        model.update(loss)                  # adjust weights\n    return model\n```\n\n微调之后便是 **deployment（部署）**：将模型封装在 API 之后，让真实用户可以发送 prompt 并获得回答。此时，之前讨论过的问题会以更大的力度重新浮现。延迟必须保持低水平，吞吐量必须保持高水平，而上一章介绍的 KV 缓存和批处理则承担了主要的工作。\n\n完整的旅程——token、embedding、prompt、inference、latency、微调和部署——至此已经走完。一个曾经只是研究成果的模型，已经变成了人们可以真正使用的服务。"
+  },
+  "tracker_calls": [
+    {
+      "agent": "SingleAgent",
+      "prompt_tokens": 377,
+      "completion_tokens": 297,
+      "note": "翻译 Chapter 1: Foundations of LLM Inference",
+      "latency_seconds": 5.281638999993447,
+      "provider": "Moonshot",
+      "model": "kimi-k3",
+      "thinking": "provider_default",
+      "outcome": "success"
+    },
+    {
+      "agent": "SingleAgent",
+      "prompt_tokens": 968,
+      "completion_tokens": 269,
+      "note": "翻译 Chapter 2: The Transformer and Attention",
+      "latency_seconds": 14.180515900021419,
+      "provider": "Moonshot",
+      "model": "kimi-k3",
+      "thinking": "provider_default",
+      "outcome": "success"
+    },
+    {
+      "agent": "SingleAgent",
+      "prompt_tokens": 1537,
+      "completion_tokens": 268,
+      "note": "翻译 Chapter 3: Optimizing Inference Latency",
+      "latency_seconds": 5.2037827000021935,
+      "provider": "Moonshot",
+      "model": "kimi-k3",
+      "thinking": "provider_default",
+      "outcome": "success"
+    },
+    {
+      "agent": "SingleAgent",
+      "prompt_tokens": 2126,
+      "completion_tokens": 274,
+      "note": "翻译 Chapter 4: Fine-tuning and Deployment",
+      "latency_seconds": 12.26311720002559,
+      "provider": "Moonshot",
+      "model": "kimi-k3",
+      "thinking": "provider_default",
+      "outcome": "success"
+    }
+  ]
+}
